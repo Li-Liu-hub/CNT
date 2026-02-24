@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	
+
+    <groupId>com.cnt</groupId>
+
+    <artifactId>cnt</artifactId>
+
+    <version>1.0.0</version>
+
+
+
+    <name>cnt</name>
+
+    <url>http://www.cnt.com</url>
+
+    <description>??????</description>
+
+    
+
+    <properties>
+
+        <cnt.version>1.0.0</cnt.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <java.version>1.8</java.version>
+
+        <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+
+        <spring-boot.version>2.5.15</spring-boot.version>
+
+        <druid.version>1.2.27</druid.version>
+
+        <yauaa.version>7.32.0</yauaa.version>
+
+        <swagger.version>3.0.0</swagger.version>
+
+        <kaptcha.version>2.3.3</kaptcha.version>
+
+        <pagehelper.boot.version>1.4.7</pagehelper.boot.version>
+
+        <fastjson.version>2.0.60</fastjson.version>
+
+        <oshi.version>6.9.1</oshi.version>
+
+        <commons.io.version>2.21.0</commons.io.version>
+
+        <poi.version>4.1.2</poi.version>
+
+        <velocity.version>2.3</velocity.version>
+
+        <jwt.version>0.9.1</jwt.version>
+
+        <!--- override dependency version -->
+
+        <tomcat.version>9.0.112</tomcat.version>
+
+        <logback.version>1.2.13</logback.version>
+
+        <spring-security.version>5.7.14</spring-security.version>
+
+        <spring-framework.version>5.3.39</spring-framework.version>
+
+    </properties>
+
+
+
+    <!--- ÒÀÀµÉùÃ÷ -->
+
+    <dependencyManagement>
+
+        <dependencies>
+
+
+
+            <!--- ¸²¸ÇSpringFrameworkµÄÒÀÀµÅäÖÃ -->
+
+            <dependency>
+
+                <groupId>org.springframework</groupId>
+
+                <artifactId>spring-framework-bom</artifactId>
+
+                <version>${spring-framework.version}</version>
+
+                <type>pom</type>
+
+                <scope>import</scope>
+
+            </dependency>
+
+
+
+            <!--- ??SpringSecurity????? -->
+
+            <dependency>
+
+                <groupId>org.springframework.security</groupId>
+
+                <artifactId>spring-security-bom</artifactId>
+
+                <version>${spring-security.version}</version>
+
+                <type>pom</type>
+
+                <scope>import</scope>
+
+            </dependency>
+
+
+
+            <!--- SpringBoot????? -->
+
+            <dependency>
+
+                <groupId>org.springframework.boot</groupId>
+
+                <artifactId>spring-boot-dependencies</artifactId>
+
+                <version>${spring-boot.version}</version>
+
+                <type>pom</type>
+
+                <scope>import</scope>
+
+            </dependency>
+
+
+
+            <!--- ??logback??????-->
+
+            <dependency>
+
+                <groupId>ch.qos.logback</groupId>
+
+                <artifactId>logback-core</artifactId>
+
+                <version>${logback.version}</version>
+
+            </dependency>
+
+
+
+            <dependency>
+
+                <groupId>ch.qos.logback</groupId>
+
+                <artifactId>logback-classic</artifactId>
+
+                <version>${logback.version}</version>
+
+            </dependency>
+
+
+
+            <!--- ??tomcat??????-->
+
+            <dependency>
+
+                <groupId>org.apache.tomcat.embed</groupId>
+
+                <artifactId>tomcat-embed-core</artifactId>
+
+                <version>${tomcat.version}</version>
+
+            </dependency>
+
+
+
+            <dependency>
+
+                <groupId>org.apache.tomcat.embed</groupId>
+
+                <artifactId>tomcat-embed-el</artifactId>
+
+                <version>${tomcat.version}</version>
+
+            </dependency>
+
+
+
+            <dependency>
+
+                <groupId>org.apache.tomcat.embed</groupId>
+
+                <artifactId>tomcat-embed-websocket</artifactId>
+
+                <version>${tomcat.version}</version>
+
+            </dependency>
+
+
+
+            <!--- ???????? -->
+
+            <dependency>
+
+                <groupId>com.alibaba</groupId>
+
+                <artifactId>druid-spring-boot-starter</artifactId>
+
+                <version>${druid.version}</version>
+
+            </dependency>
+
+
+
+            <!--- ???????????????-->
+
+            <dependency>
+
+                <groupId>nl.basjes.parse.useragent</groupId>
+
+                <artifactId>yauaa</artifactId>
+
+                <version>${yauaa.version}</version>
+
+            </dependency>
+
+
+
+            <!--- pagehelper ???? -->
+
+            <dependency>
+
+                <groupId>com.github.pagehelper</groupId>
+
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+
+                <version>${pagehelper.boot.version}</version>
+
+            </dependency>
+
+
+
+            <!--- ?????? -->
+
+            <dependency>
+
+                <groupId>com.github.oshi</groupId>
+
+                <artifactId>oshi-core</artifactId>
+
+                <version>${oshi.version}</version>
+
+            </dependency>
+
+
+
+            <!--- Swagger3?? -->
+
+            <dependency>
+
+                <groupId>io.springfox</groupId>
+
+                <artifactId>springfox-boot-starter</artifactId>
+
+                <version>${swagger.version}</version>
+
+                <exclusions>
+
+                    <exclusion>
+
+                        <groupId>io.swagger</groupId>
+
+                        <artifactId>swagger-models</artifactId>
+
+                    </exclusion>
+
+                </exclusions>
+
+            </dependency>
+
+
+
+            <!--- io??????-->
+
+            <dependency>
+
+                <groupId>commons-io</groupId>
+
+                <artifactId>commons-io</artifactId>
+
+                <version>${commons.io.version}</version>
+
+            </dependency>
+
+
+
+            <!--- excel?? -->
+
+            <dependency>
+
+                <groupId>org.apache.poi</groupId>
+
+                <artifactId>poi-ooxml</artifactId>
+
+                <version>${poi.version}</version>
+
+            </dependency>
+
+
+
+            <!--- velocity???????? -->
+
+            <dependency>
+
+                <groupId>org.apache.velocity</groupId>
+
+                <artifactId>velocity-engine-core</artifactId>
+
+                <version>${velocity.version}</version>
+
+            </dependency>
+
+
+
+            <!--- ??JSON????-->
+
+            <dependency>
+
+                <groupId>com.alibaba.fastjson2</groupId>
+
+                <artifactId>fastjson2</artifactId>
+
+                <version>${fastjson.version}</version>
+
+            </dependency>
+
+
+
+            <!--- Token??????-->
+
+            <dependency>
+
+                <groupId>io.jsonwebtoken</groupId>
+
+                <artifactId>jjwt</artifactId>
+
+                <version>${jwt.version}</version>
+
+            </dependency>
+
+
+
+            <!--- ????-->
+
+            <dependency>
+
+                <groupId>pro.fessional</groupId>
+
+                <artifactId>kaptcha</artifactId>
+
+                <version>${kaptcha.version}</version>
+
+            </dependency>
+
+
+
+            <!--- ????-->
+
+            <dependency>
+
+                <groupId>com.cnt</groupId>
+
+                <artifactId>cnt-quartz</artifactId>
+
+                <version>${cnt.version}</version>
+
+            </dependency>
+
+
+
+            <!--- ???-->
+
+            <dependency>
+
+                <groupId>com.cnt</groupId>
+
+                <artifactId>cnt-framework</artifactId>
+
+                <version>${cnt.version}</version>
+
+            </dependency>
+
+
+
+            <!--- ????-->
+
+            <dependency>
+
+                <groupId>com.cnt</groupId>
+
+                <artifactId>cnt-system</artifactId>
+
+                <version>${cnt.version}</version>
+
+            </dependency>
+
+
+
+            <!--- ????-->
+
+            <dependency>
+
+                <groupId>com.cnt</groupId>
+
+                <artifactId>cnt-common</artifactId>
+
+                <version>${cnt.version}</version>
+
+            </dependency>
+
+
+
+        </dependencies>
+
+    </dependencyManagement>
+
+
+
+    <modules>
+
+        <module>cnt-admin</module>
+
+        <module>cnt-framework</module>
+
+        <module>cnt-system</module>
+
+        <module>cnt-quartz</module>
+
+        <module>cnt-common</module>
+
+    </modules>
+
+    <packaging>pom</packaging>
+
+
+
+    <build>
+
+        <plugins>
+
+            <plugin>
+
+                <groupId>org.apache.maven.plugins</groupId>
+
+                <artifactId>maven-compiler-plugin</artifactId>
+
+                <version>3.1</version>
+
+                <configuration>
+
+                    <source>${java.version}</source>
+
+                    <target>${java.version}</target>
+
+                    <encoding>${project.build.sourceEncoding}</encoding>
+
+                </configuration>
+
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+
+
+    <repositories>
+
+        <repository>
+
+            <id>public</id>
+
+            <name>aliyun nexus</name>
+
+            <url>https://maven.aliyun.com/repository/public</url>
+
+            <releases>
+
+                <enabled>true</enabled>
+
+            </releases>
+
+        </repository>
+
+    </repositories>
+
+
+
+    <pluginRepositories>
+
+        <pluginRepository>
+
+            <id>public</id>
+
+            <name>aliyun nexus</name>
+
+            <url>https://maven.aliyun.com/repository/public</url>
+
+            <releases>
+
+                <enabled>true</enabled>
+
+            </releases>
+
+            <snapshots>
+
+                <enabled>false</enabled>
+
+            </snapshots>
+
+        </pluginRepository>
+
+    </pluginRepositories>
+
+
+
+</project>

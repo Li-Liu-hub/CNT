@@ -1,0 +1,3 @@
+Application Version: ${cnt.version}
+Spring Boot Version: ${spring-boot.version}
+JSYL改版，原版为若以框架
